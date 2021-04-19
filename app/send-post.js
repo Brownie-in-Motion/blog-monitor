@@ -1,16 +1,22 @@
 const https = require('https');
 
-module.exports = (url, { date, body }) => {
-  const data = JSON.stringify({
-    'content': `**${date}**\n${body}\n`,
-    'allowed_mentions': { 'parse': [] }
-  });
+const sendMessage = (url, message) => {
+  const data = JSON.stringify(message)
   const request = https.request(url, {
     method: 'POST',
     headers: {
       'content-type': 'application/json'
     }
   });
-  request.write(data);
-  request.end();
+  request.end(data);
+}
+
+module.exports = (url, { date, body }) => {
+  sendMessage(url, {
+    'content': 'New Eric update! @everyone'
+  });
+  sendMessage(url, {
+    'content': `**${date}**\n${body}\n`,
+    'allowed_mentions': { 'parse': [] }
+  });
 };
