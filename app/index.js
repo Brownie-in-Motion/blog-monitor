@@ -22,7 +22,7 @@ const checkPosts = async (state, blogUrl, webhookUrl) => {
 
 };
 
-const { blogUrl, webhookUrl } = require('config.json');
+const { blogUrl, webhookUrl } = require('./config.json');
 
 (async () => {
 
