@@ -12,12 +12,13 @@ const sendMessage = (url, message) => {
   request.end(data);
 };
 
-module.exports = (url, { date, body }) => {
+module.exports = async (url, { date, body }) => {
   if (alert) {
     sendMessage(url, {
       content: 'New Eric update! @everyone',
     });
   }
+  await new Promise(r => setTimeout(r, 1000));
   sendMessage(url, {
     content: `**${date}**\n${body}\n`,
     allowed_mentions: { parse: [] },
