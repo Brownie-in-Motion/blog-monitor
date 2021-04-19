@@ -1,5 +1,5 @@
 const https = require('https');
-const { alert } = require('./config.json');
+const { alert } = require('../config.json');
 
 const sendMessage = (url, message) => {
   const data = JSON.stringify(message);

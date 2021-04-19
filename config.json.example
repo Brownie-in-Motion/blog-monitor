@@ -1,0 +1,5 @@
+{
+  "blogUrl": "[blog url]",
+  "webhookUrl": "[webhook url]",
+  "alert": "New update! @everyone"
+}
