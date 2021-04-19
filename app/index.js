@@ -4,7 +4,7 @@ const parseBlog = require('./parse-blog');
 const sendPost = require('./send-post');
 
 const writeState = state => {
-  fs.writeFileSync('./state.json', JSON.stringify(state));
+  fs.writeFileSync('./state.json', JSON.stringify(state, null, '  '));
 };
 
 const checkPosts = async (state, blogUrl, webhookUrl) => {
