@@ -1,5 +1,6 @@
 {
   "blogUrl": "[blog url]",
   "webhookUrl": "[webhook url]",
-  "alert": "New update! @everyone"
+  "alert": "New update! @everyone",
+  "interval": 10000
 }
