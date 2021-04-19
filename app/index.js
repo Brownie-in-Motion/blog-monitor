@@ -36,6 +36,8 @@ const { blogUrl, webhookUrl } = require('./config.json');
     state = new Set(posts);
   }
 
+  checkPosts(state, blogUrl, webhookUrl);
+
   setInterval(() => {
     checkPosts(state, blogUrl, webhookUrl)
   }, 60 * 60 * 1000);
