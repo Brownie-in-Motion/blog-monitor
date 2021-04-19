@@ -11,7 +11,7 @@ const checkPosts = async (state, blogUrl, webhookUrl) => {
   const currentPosts = await parseBlog(blogUrl);
   currentPosts.reverse();
   for (const post of currentPosts) {
-    if (! state.has(post.date)) {
+    if (!state.has(post.date)) {
       console.log(`New post found: ${post.date}`);
       sendPost(webhookUrl, post);
       state.add(post.date);

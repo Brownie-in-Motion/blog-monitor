@@ -1,4 +1,5 @@
 const https = require('https');
+const { alert } = require('./config.json');
 
 const sendMessage = (url, message) => {
   const data = JSON.stringify(message)
@@ -12,9 +13,11 @@ const sendMessage = (url, message) => {
 }
 
 module.exports = (url, { date, body }) => {
-  sendMessage(url, {
-    'content': 'New Eric update! @everyone'
-  });
+  if (alert) {
+    sendMessage(url, {
+      'content': 'New Eric update! @everyone'
+    });
+  }
   sendMessage(url, {
     'content': `**${date}**\n${body}\n`,
     'allowed_mentions': { 'parse': [] }
