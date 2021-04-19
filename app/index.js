@@ -21,7 +21,7 @@ const checkPosts = async (state, blogUrl, webhookUrl) => {
   }
 };
 
-const { blogUrl, webhookUrl } = require('../config.json');
+const { blogUrl, webhookUrl, interval } = require('../config.json');
 
 (async () => {
   let state;
@@ -38,5 +38,5 @@ const { blogUrl, webhookUrl } = require('../config.json');
 
   setInterval(() => {
     checkPosts(state, blogUrl, webhookUrl);
-  }, 60 * 60 * 1000);
+  }, interval ?? 60 * 60 * 1000);
 })();
