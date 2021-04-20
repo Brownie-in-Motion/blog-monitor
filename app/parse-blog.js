@@ -29,11 +29,14 @@ const clean = text => {
     .replace(/<script>(.*)<\/script>/gs, '')
     .replace(/\n+/gs, ' ');
 
+  // link replacements
+  text = text.replace(/<a href="(.+?)">(.+?)<\/a>/gm, '$2 ($1)');
+
   // tag replacements
   [
     ['br', '\n'],
     ['li', '\n- '],
-    ['.+?', ''],
+    ['.+?', '']
   ].forEach(([tag, value]) => {
     text = text.replace(new RegExp(`<${tag}> *`, 'g'), value);
   });
