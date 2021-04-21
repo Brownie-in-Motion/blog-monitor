@@ -3,7 +3,7 @@ const { alert, update } = require('../config.json');
 
 const sleep = time => {
   return new Promise(r => setTimeout(r, time));
-}
+};
 
 const sendMessage = async (url, message) => {
   const data = JSON.stringify(message);
@@ -18,7 +18,6 @@ const sendMessage = async (url, message) => {
 };
 
 module.exports = {
-
   sendPost: async (url, date, body) => {
     if (alert) {
       await sendMessage(url, {
@@ -44,5 +43,4 @@ module.exports = {
       allowed_mentions: { parse: [] },
     });
   },
-
-}
+};

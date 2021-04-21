@@ -5,8 +5,7 @@ const parseBlog = require('./parse-blog');
 const { sendPost, sendUpdate } = require('./webhook');
 
 const md5 = data => {
-  return crypto.createHash('md5')
-    .update(data).digest('hex');
+  return crypto.createHash('md5').update(data).digest('hex');
 };
 
 const writeState = state => {
@@ -33,15 +32,14 @@ const checkPosts = async (state, blogUrl, webhookUrl) => {
 const { blogUrl, webhookUrl, interval } = require('../config.json');
 
 (async () => {
-
   let state;
   try {
     const data = fs.readFileSync('./state.json');
     state = new Map(JSON.parse(data));
   } catch {
-    state = new Map((await parseBlog(blogUrl)).map(
-      ({ date, body }) => [ date, md5(body) ]
-    ));
+    state = new Map(
+      (await parseBlog(blogUrl)).map(({ date, body }) => [date, md5(body)])
+    );
     writeState(state);
   }
 
@@ -50,5 +48,4 @@ const { blogUrl, webhookUrl, interval } = require('../config.json');
   setInterval(() => {
     checkPosts(state, blogUrl, webhookUrl);
   }, interval ?? 60 * 60 * 1000);
-
 })();

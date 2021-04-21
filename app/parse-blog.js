@@ -36,7 +36,7 @@ const clean = text => {
   [
     ['br', '\n'],
     ['li', '\n- '],
-    ['.+?', '']
+    ['.+?', ''],
   ].forEach(([tag, value]) => {
     text = text.replace(new RegExp(`<${tag}> *`, 'g'), value);
   });
